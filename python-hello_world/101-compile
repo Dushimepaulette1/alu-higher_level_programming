@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ -z "$PYFILE" ] && { echo "Error: PYFILE environment variable is not set."; exit 1; }
+python3 -m py_compile "$PYFILE" && mv "__pycache__/${PYFILE%.py}".*.pyc "${PYFILE}c" && echo "Compiling $PYFILE ... Compiled successfully. Output filename: ${PYFILE}c" || { echo "Error: Compilation failed for $PYFILE"; exit 1; }
