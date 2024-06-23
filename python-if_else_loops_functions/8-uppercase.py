@@ -9,7 +9,7 @@ def uppercase(str):
             result += char
     print("{}".format(result))
 
-# Test cases
+
 if __name__ == "__main__":
     uppercase("best")
     uppercase("Best School 98 Battery street")
