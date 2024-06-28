@@ -14,10 +14,10 @@ result_mul = mul(a, b)
 result_div = div(a, b)
 
 # Print the results
-print(f"{a} + {b} = {result_add}")
-print(f"{a} - {b} = {result_sub}")
-print(f"{a} * {b} = {result_mul}")
-print(f"{a} / {b} = {result_div}")
+print("{} + {} = {}".format(a, b, result_add))
+print("{} - {} = {}".format(a, b, result_sub))
+print("{} * {} = {}".format(a, b, result_mul))
+print("{} / {} = {}".format(a, b, result_div))
 
 if __name__ == "__main__":
     pass
