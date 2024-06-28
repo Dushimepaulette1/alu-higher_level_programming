@@ -21,4 +21,3 @@ if __name__ == "__main__":
         # Print each argument with its position
         for i, arg in enumerate(argv, start=1):
             print(f"{i}: {arg}")
-
