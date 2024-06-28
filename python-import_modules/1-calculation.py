@@ -5,13 +5,13 @@ a = 10
 b = 5
 
 # Import the functions from calculator_1
-import calculator_1 as m
+from calculator_1 import add, sub, mul, div
 
 # Perform the calculations
-result_add = m.add(a, b)
-result_sub = m.sub(a, b)
-result_mul = m.mul(a, b)
-result_div = m.div(a, b)
+result_add = add(a, b)
+result_sub = sub(a, b)
+result_mul = mul(a, b)
+result_div = div(a, b)
 
 # Print the results
 print("{} + {} = {}".format(a, b, result_add))
