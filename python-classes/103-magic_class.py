@@ -6,6 +6,7 @@ Define a MagicClass for circle calculations.
 
 import math
 
+
 class MagicClass:
     """
     Represents a circle with methods for area and circumference.
@@ -46,4 +47,3 @@ class MagicClass:
             float: Circumference of the circle.
         """
         return 2 * math.pi * self.__radius
-
