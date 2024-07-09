@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Define classes for a singly linked list."""
 
 class Node:
     """
@@ -129,13 +130,4 @@ class SinglyLinkedList:
             s += str(current.data) + '\n'
             current = current.next_node
         return s[:-1]  # Removes the last newline character
-
-
-if __name__ == "__main__":
-    # Example usage
-    linked_list = SinglyLinkedList()
-    linked_list.sorted_insert(5)
-    linked_list.sorted_insert(3)
-    linked_list.sorted_insert(7)
-    print(linked_list)
 
