@@ -99,17 +99,17 @@ class SinglyLinkedList:
         """
         new_node = Node(value)
         tmp = self.__head
-        add_start = False
+        add_stat = False
 
         if not self.__head:
             self.__head = new_node
             new_node.next_node = None
         else:
             if value < self.__head.data:
-                add_start = True
-            while tmp.next_node and value > tmp.next_node.data and not add_start:
+                add_stat = True
+            while tmp.next_node and value > tmp.next_node.data and not add_stat:
                 tmp = tmp.next_node
-            if not add_start:
+            if not add_stat:
                 new_node.next_node = tmp.next_node
                 tmp.next_node = new_node
             else:
