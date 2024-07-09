@@ -4,6 +4,7 @@
 Define a square with size and position attributes.
 """
 
+
 class Square:
     """
     Represents a square with size and position.
@@ -61,7 +62,7 @@ class Square:
         self.__position = value
 
     def __str__(self):
-        """Return a string representation of the square, similar to my_print()."""
+        """Return a string representation of the square, similar to my_print"""
         result = ""
         if self.size == 0:
             return result
