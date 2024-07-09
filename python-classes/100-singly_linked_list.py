@@ -92,7 +92,7 @@ class SinglyLinkedList:
 
     def sorted_insert(self, value):
         """
-        Insert a new node with the given value into the linked list in sorted order.
+        Insert a new node with the given value into the linked list.
 
         Parameters:
         value (int)
