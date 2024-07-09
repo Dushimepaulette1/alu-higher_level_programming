@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Define classes for a singly linked list."""
 
+
 class Node:
     """
     Define a node of a singly linked list.
@@ -16,7 +17,7 @@ class Node:
 
         Parameters:
         data (int): Data to be stored in the node.
-        next_node (Node, optional): Reference to the next node in the linked list. Defaults to None.
+        next_node (Node, optional):Defaults to None.
 
         Raises:
         TypeError: If data is not an integer.
@@ -80,7 +81,7 @@ class SinglyLinkedList:
     Define a singly linked list.
 
     Attributes:
-    __head (Node or None): Reference to the head (first node) of the linked list.
+    __head (Node or None): Reference to the head of the linked list.
     """
 
     def __init__(self):
@@ -94,7 +95,7 @@ class SinglyLinkedList:
         Insert a new node with the given value into the linked list in sorted order.
 
         Parameters:
-        value (int): Value to be inserted into the linked list.
+        value (int)
         """
         new_node = Node(value)
         tmp = self.__head
@@ -130,4 +131,3 @@ class SinglyLinkedList:
             s += str(current.data) + '\n'
             current = current.next_node
         return s[:-1]  # Removes the last newline character
-
