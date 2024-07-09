@@ -131,7 +131,6 @@ class Square:
             other (Square): Another square to compare with.
 
         Returns:
-            bool: True if this square's area is greater or equal to the other's.
+            bool: True if this square's area is greater or equal to the other
         """
         return self.area() >= other.area()
-
