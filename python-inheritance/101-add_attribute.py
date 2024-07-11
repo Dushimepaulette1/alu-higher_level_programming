@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Function that adds a new attribute if possible """
 
+
 def add_attribute(obj, attr, value):
     """ Adds new attribute to the object if possible """
     if not hasattr(obj, '__dict__'):
