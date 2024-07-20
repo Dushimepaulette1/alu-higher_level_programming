@@ -1,70 +1,49 @@
 #!/usr/bin/python3
 """
-    This module reads from stdin line by line, computes metrics, and prints them.
+Task: 0. Log Parsing
+File: 0x06-log_parsing/0-stats.py
 """
+from sys import stdin
 
-import sys
 
-def print_stats(total_size, status_counts):
+def printstats(file_size, status_codes):
     """
-    Print the accumulated statistics.
-
-    Args:
-        total_size (int): The total file size accumulated.
-        status_counts (dict): Dictionary with status codes and their counts.
+    This prints statistics at the beginning and every 10 lines
+    This will also be called on a Keyboard interruption
     """
-    print(f"File size: {total_size}")
-    for status in sorted(status_counts.keys()):
-        if status_counts[status] > 0:
-            print(f"{status}: {status_counts[status]}")
+    print("File size: " + str(file_size))
+    for code in sorted(status_codes.keys()):
+        if status_codes[code] > 0:
+            print(code + ": " + str(status_codes[code]))
 
-def read_and_out():
-    """
-    Read from stdin and process each line to compute metrics.
-    
-    Reads log lines, accumulates file sizes, counts occurrences of status codes,
-    and prints statistics every 10 lines and at the end on keyboard interruption.
-    """
-    total_size = 0
-    status_counts = {
-        200: 0,
-        301: 0,
-        400: 0,
-        401: 0,
-        403: 0,
-        404: 0,
-        405: 0,
-        500: 0
-    }
-    line_count = 0
 
-    try:
-        for line in sys.stdin:
-            line_count += 1
-            parts = line.split()
-            if len(parts) >= 9:
-                try:
-                    file_size = int(parts[-1])
-                    status_code = int(parts[-2])
-                    
-                    if status_code in status_counts:
-                        status_counts[status_code] += 1
-                    total_size += file_size
-                except ValueError:
-                    # Skip lines with invalid file size or status code
-                    continue
+line_num = 0
+file_size = 0
+status_code = 0
+status_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
+                "403": 0, "404": 0, "405": 0, "500": 0}
 
-            if line_count % 10 == 0:
-                print_stats(total_size, status_counts)
+try:
+    for line in stdin:
+        line_num += 1
+        split_line = line.split()
 
-    except KeyboardInterrupt:
-        # Print stats on keyboard interruption
-        print_stats(total_size, status_counts)
-        raise
+        if len(split_line) > 1:
+            file_size += int(split_line[-1])
 
-    # Print final stats
-    print_stats(total_size, status_counts)
+        if len(split_line) > 2 and split_line[-2].isnumeric():
+            status_code = split_line[-2]
+        else:
+            status_code = 0
 
-if __name__ == "__main__":
-    read_and_out()
+        if status_code in status_codes.keys():
+            status_codes[status_code] += 1
 
+        if line_num % 10 == 0:
+            printstats(file_size, status_codes)
+
+    printstats(file_size, status_codes)
+
+except (KeyboardInterrupt):
+    printstats(file_size, status_codes)
+    raise
