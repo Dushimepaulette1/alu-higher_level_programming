@@ -23,12 +23,15 @@ def read_and_out():
             line_count += 1
             parts = line.split()
             if len(parts) >= 9:
-                file_size = int(parts[-1])
-                total_size += file_size
+                try:
+                    file_size = int(parts[-1])
+                    total_size += file_size
 
-                status_code = int(parts[-2])
-                if status_code in status_counts:
-                    status_counts[status_code] += 1
+                    status_code = int(parts[-2])
+                    if status_code in status_counts:
+                        status_counts[status_code] += 1
+                except ValueError:
+                    continue  # Skip lines with incorrect format
 
             if line_count % 10 == 0:
                 print_stats(total_size, status_counts)
@@ -41,3 +44,4 @@ def read_and_out():
 
 if __name__ == "__main__":
     read_and_out()
+
