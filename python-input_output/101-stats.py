@@ -6,16 +6,25 @@
 import sys
 
 def print_stats(total_size, status_counts):
-    """Prints the current statistics"""
+    """Prints the current statistics."""
     print(f"File size: {total_size}")
     for status in sorted(status_counts.keys()):
         if status_counts[status] > 0:
             print(f"{status}: {status_counts[status]}")
 
 def read_and_out():
-    """Read from stdin and process each line"""
+    """Read from stdin and process each line."""
     total_size = 0
-    status_counts = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+    status_counts = {
+        200: 0,
+        301: 0,
+        400: 0,
+        401: 0,
+        403: 0,
+        404: 0,
+        405: 0,
+        500: 0
+    }
     line_count = 0
 
     try:
@@ -31,15 +40,18 @@ def read_and_out():
                     if status_code in status_counts:
                         status_counts[status_code] += 1
                 except ValueError:
-                    continue  # Skip lines with incorrect format
+                    # Skip lines with invalid file size or status code
+                    continue
 
             if line_count % 10 == 0:
                 print_stats(total_size, status_counts)
 
     except KeyboardInterrupt:
+        # Print stats on keyboard interruption
         print_stats(total_size, status_counts)
         raise
 
+    # Print final stats
     print_stats(total_size, status_counts)
 
 if __name__ == "__main__":
