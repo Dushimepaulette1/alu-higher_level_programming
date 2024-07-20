@@ -6,14 +6,25 @@
 import sys
 
 def print_stats(total_size, status_counts):
-    """Prints the current statistics."""
+    """
+    Print the accumulated statistics.
+
+    Args:
+        total_size (int): The total file size accumulated.
+        status_counts (dict): Dictionary with status codes and their counts.
+    """
     print(f"File size: {total_size}")
     for status in sorted(status_counts.keys()):
         if status_counts[status] > 0:
             print(f"{status}: {status_counts[status]}")
 
 def read_and_out():
-    """Read from stdin and process each line."""
+    """
+    Read from stdin and process each line to compute metrics.
+    
+    Reads log lines, accumulates file sizes, counts occurrences of status codes,
+    and prints statistics every 10 lines and at the end on keyboard interruption.
+    """
     total_size = 0
     status_counts = {
         200: 0,
@@ -34,11 +45,11 @@ def read_and_out():
             if len(parts) >= 9:
                 try:
                     file_size = int(parts[-1])
-                    total_size += file_size
-
                     status_code = int(parts[-2])
+                    
                     if status_code in status_counts:
                         status_counts[status_code] += 1
+                    total_size += file_size
                 except ValueError:
                     # Skip lines with invalid file size or status code
                     continue
