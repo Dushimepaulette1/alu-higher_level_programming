@@ -9,7 +9,7 @@ if __name__ == '__main__':
     """Documented"""
     url = sys.argv[1]
     values = {"email": sys.argv[2]}
-    data = urllib.parse.urlencode(values).encode('ascii') #Encode data to bytes
+    data = urllib.parse.urlencode(values).encode('ascii')  #Encode data to bytes
     req = urllib.request.Request(url, data)
     with urllib.request.urlopen(req) as response:
         content = response.read()
