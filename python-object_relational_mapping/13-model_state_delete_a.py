@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""script that deletes all State objects with a
-name containing the letter a from the database
-hbtn_0e_6_usa
+""" Python script that deletes all State objects with a
+    name containing the letter a from the database
+    hbtn_0e_6_usa
 """
 
 import sys
@@ -24,5 +24,4 @@ if __name__ == "__main__":
         session.delete(state)
 
     session.commit()
-
     session.close()
