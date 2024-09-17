@@ -10,7 +10,7 @@ const myObject = {
 console.log(myObject);
 
 // Define a function incr that increments the value property of the object
-myObject.incr = function() {
+myObject.incr = function () {
   this.value += 1; // Increment the value by 1
 };
 
@@ -23,4 +23,3 @@ console.log(myObject); // Print the object
 
 myObject.incr(); // Increment the value to 15
 console.log(myObject); // Print the object
-
