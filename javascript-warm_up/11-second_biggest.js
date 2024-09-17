@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 // Function to find the second biggest integer in an array of integers
-function findSecondBiggest(arr) {
+function findSecondBiggest (arr) {
   // Initialize two variables to hold the biggest and second biggest values
   let biggest = -Infinity;
   let secondBiggest = -Infinity;
