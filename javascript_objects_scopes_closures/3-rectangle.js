@@ -3,7 +3,7 @@
 
 class Rectangle {
   // Constructor that initializes the rectangle with width (w) and height (h)
-  constructor(w, h) {
+  constructor (w, h) {
     // Check if both w (width) and h (height) are positive integers greater than 0
     if (typeof w === 'number' && w > 0 && typeof h === 'number' && h > 0) {
       // Initialize instance attributes width and height
