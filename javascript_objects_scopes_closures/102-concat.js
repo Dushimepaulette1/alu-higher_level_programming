@@ -1,32 +1,21 @@
 #!/usr/bin/node
-// Import the required 'fs' module for file system operations
+// Import the 'fs' module to work with the file system
 const fs = require('fs');
 
-// Get the file paths from the command-line arguments
-const [,, fileA, fileB, fileC] = process.argv;
+// Get the command-line arguments (the file paths)
+const args = process.argv.slice(2);
 
-// Read the contents of the first file
-fs.readFile(fileA, 'utf8', (err, dataA) => {
-  if (err) {
-    console.error(`Error reading ${fileA}: ${err.message}`);
-    return;
-  }
+// Read the contents of the first file synchronously
+const fileA = fs.readFileSync(args[0], 'utf8');
 
-  // Read the contents of the second file
-  fs.readFile(fileB, 'utf8', (err, dataB) => {
-    if (err) {
-      console.error(`Error reading ${fileB}: ${err.message}`);
-      return;
-    }
+// Read the contents of the second file synchronously
+const fileB = fs.readFileSync(args[1], 'utf8');
 
-    // Concatenate the contents and write to the destination file
-    fs.writeFile(fileC, dataA + dataB, (err) => {
-      if (err) {
-        console.error(`Error writing to ${fileC}: ${err.message}`);
-        return;
-      }
+// Concatenate the contents of both files
+const fileC = `${fileA}${fileB}`;
 
-      console.log(`Contents of ${fileA} and ${fileB} have been concatenated into ${fileC}`);
-    });
-  });
-});
+// Write the concatenated content to the destination file synchronously
+fs.writeFileSync(args[2], fileC);
+
+// Print a message to indicate successful concatenation
+console.log(`Contents of ${args[0]} and ${args[1]} have been concatenated into ${args[2]}`);
