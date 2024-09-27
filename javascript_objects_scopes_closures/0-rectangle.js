@@ -1,3 +1,4 @@
+#!/usr/bin/node
 // Define a class called Rectangle
 class Rectangle {
   // This class is currently empty
