@@ -12,8 +12,7 @@ for (const userId in dict) {
   // If the occurrence count does not exist in the new dictionary, initialize it
   if (!occurrences[occurrenceCount]) {
     occurrences[occurrenceCount] = []; // Create an empty array for this occurrence count
-  }
-  
+  }  
   // Add the user ID to the corresponding occurrence count array
   occurrences[occurrenceCount].push(userId);
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Import the required modules
+// Import the required 'fs' module for file system operations
 const fs = require('fs');
 
 // Get the file paths from the command-line arguments
@@ -11,7 +11,7 @@ fs.readFile(fileA, 'utf8', (err, dataA) => {
     console.error(`Error reading ${fileA}: ${err.message}`);
     return;
   }
-  
+
   // Read the contents of the second file
   fs.readFile(fileB, 'utf8', (err, dataB) => {
     if (err) {
@@ -23,3 +23,10 @@ fs.readFile(fileA, 'utf8', (err, dataA) => {
     fs.writeFile(fileC, dataA + dataB, (err) => {
       if (err) {
         console.error(`Error writing to ${fileC}: ${err.message}`);
+        return;
+      }
+
+      console.log(`Contents of ${fileA} and ${fileB} have been concatenated into ${fileC}`);
+    });
+  });
+});
