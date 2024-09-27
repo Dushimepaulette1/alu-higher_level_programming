@@ -5,7 +5,7 @@
 class Rectangle {
   // The constructor method is called when a new Rectangle object is created.
   // It takes two parameters: w (width) and h (height)
-  constructor(w, h) {
+  constructor (w, h) {
     // Initialize the instance attribute 'width' with the value of 'w'
     this.width = w;
 
