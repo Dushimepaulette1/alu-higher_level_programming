@@ -14,8 +14,7 @@ request.get(apiUrl, (error, response, body) => {
     console.error(error);
   } else {
     // Parse the response body (it's returned as a string, so we need to convert it to JSON)
-    const tasks = JSON.parse(body);
-    
+    const tasks = JSON.parse(body);    
     // Create an object to store the count of completed tasks by user ID
     const completedTasks = {};
 
