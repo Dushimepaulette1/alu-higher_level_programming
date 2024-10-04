@@ -34,7 +34,18 @@ request(movieUrl, (err, res, body) => {
   // Get the characters array from the movie data
   const characters = movie.characters;
 
+  // Check if the characters array is empty
+  if (characters.length === 0) {
+    console.log('Characters not found'); // Log message if no characters are found
+    return; // Exit if no characters
+  }
+
+  // Array to hold character names
+  const characterNames = [];
+
   // Loop through each character URL and make a request to get the character names
+  let completedRequests = 0; // To keep track of completed requests
+
   characters.forEach((characterUrl) => {
     request(characterUrl, (err, res, body) => {
       // Check if there was an error during the character request
@@ -52,8 +63,17 @@ request(movieUrl, (err, res, body) => {
         return; // Exit if parsing fails
       }
 
-      // Print the character name
-      console.log(character.name); // Output the character's name
+      // Add the character name to the array
+      characterNames.push(character.name); // Output the character's name
+
+      // Increment the completed requests counter
+      completedRequests++;
+
+      // Check if all requests have completed
+      if (completedRequests === characters.length) {
+        // Print all character names in order
+        characterNames.forEach((name) => console.log(name)); // Output each character name
+      }
     });
   });
 });
