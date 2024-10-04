@@ -63,4 +63,3 @@ request(movieUrl, (err, res, body) => {
       console.error('Error fetching character data:', error);
     });
 });
-
